@@ -1,4 +1,5 @@
-import Select from 'react-select';
+// import Select from 'react-select';
+import { SelectInput } from '../Styled/Styled';
 
 const options = [
     { value: 'first-bank', label: 'First Bank' },
@@ -8,7 +9,7 @@ const options = [
 
 const SearchableSelect = () => {
     return (
-        <Select
+        <SelectInput
             options={options}
             isSearchable={true}
         />

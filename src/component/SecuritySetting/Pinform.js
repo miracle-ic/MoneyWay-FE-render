@@ -67,9 +67,11 @@ const Pinform = () => {
   const togglePasswordVisibilityOldPass = () => {
     setShowPin(!showPin);
   };
+
   const togglePasswordVisibilityNewPass = () => {
     setShowPin2(!showPin2);
   };
+  
   const togglePasswordVisibilityConfirmPass = () => {
     setShowPin3(!showPin3);
   };
@@ -106,7 +108,7 @@ const Pinform = () => {
 
   return (
     <Form>
-      {/* -----------------------------------Password Input - Div */}
+      {/* -----------------------------------Pin Input - Div */}
       <FormDiv>
         <PGraphF>
             Minimum length is 4 characters

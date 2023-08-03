@@ -105,7 +105,7 @@ const Dashboard = () => {
               <WSDiv>
                 <WSDiv2>
                   <W1Label>Account Balance</W1Label>
-                  <W2Label>{accountBalance}</W2Label>
+                  <W2Label>N {accountBalance}</W2Label>
                 </WSDiv2>
 
                 <WSDiv2>
@@ -127,7 +127,7 @@ const Dashboard = () => {
               <WSDiv>
                 <WSDiv2>
                   <W1Label>Amount Spent</W1Label>
-                  <W2Label>XXXX</W2Label>
+                  <W2Label>N***</W2Label>
                 </WSDiv2>
 
                 <WSDiv2>

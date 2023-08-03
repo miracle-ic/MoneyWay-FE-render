@@ -24,7 +24,7 @@ const Mobilemenu = () => {
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
           }
-          to={"/user/"}
+          to={"/user/dashboard"}
         >
           <LuLayoutDashboard style={{ marginRight: "8px", fontSize: "22px" }} />
           Dashboard

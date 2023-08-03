@@ -1,88 +1,115 @@
-import {useState} from "react";
-import Select, { components } from 'react-select';
+import { useState } from "react";
+import Select, { components } from "react-select";
 import SearchableSelect from "./SearchableSelect";
 import Switch from "@mui/material/Switch";
+import {
+  ButtonP,
+  EyeIcon,
+  Form,
+  FormDiv,
+  IconFlex,
+  IconGrid,
+  Input,
+  InputDes,
+  InputGrid,
+  InputGridDiv,
+  LabelInput,
+  SBDiv,
+  SlashEyeIcon,
+} from "../Styled/Styled";
+import Togglebtn from "../Togglebtn/Togglebtn";
 // const { Option } = components;
 
 const OtherBankTransfer = () => {
-    const [selectedBankOption, setSelectedBankOption] = useState('');
-    const bankOptions = [
-        { value: 'first-bank', label: 'First Bank' },
-        { value: 'guaranty-trust-bank', label: 'Guaranty Trust Bank' },
-        { value: 'polaris-bank', label: 'Polaris Bank' },
-    ];
-    const [saveBeneficiary, setSaveBeneficiary] = useState(false);
+  const [pin, setPin] = useState("");
+  const [showPin, setShowPin] = useState(false);
 
-    const handleBankOptionChange = (selectedBankOption) => {
-        setSelectedBankOption(selectedBankOption);
-    };
-    const handleChange = (event) => {
-        setSaveBeneficiary(event.target.checked);
-    };
+  const [selectedBankOption, setSelectedBankOption] = useState("");
+  const bankOptions = [
+    { value: "first-bank", label: "First Bank" },
+    { value: "guaranty-trust-bank", label: "Guaranty Trust Bank" },
+    { value: "polaris-bank", label: "Polaris Bank" },
+  ];
 
-    return (
-        <div>
-            <form>
-                {/*email*/}
-                <div className = "flex flex-col">
-                    <label className = "font-semibold text-sm" htmlFor="select-bank-dropdown-menu">
-                        Bank
-                    </label>
-                    {/*<input id = "email-text-field" type = "text" placeholder = "Enter email address" className = "py-3 px-4 border mt-2 rounded-md"/>*/}
-                    {/*<Select*/}
-                    {/*    id="select-bank-dropdown"*/}
-                    {/*    value={selectedBankOption}*/}
-                    {/*    onChange={handleBankOptionChange}*/}
-                    {/*    options={bankOptions}*/}
-                    {/*    className = "py-3 px-4 border shadow-sm focus:outline-none mt-2 rounded-md"*/}
-                    {/*/>*/}
-                    <SearchableSelect />
-                </div>
+  const [saveBeneficiary, setSaveBeneficiary] = useState(false);
 
-                {/*amount*/}
-                <div className = "flex flex-col mt-4">
-                    <label className = "font-semibold text-sm" htmlFor="amount-text-field">
-                        Amount
-                    </label>
-                    <input id = "amount-text-field" type = "text" placeholder = "Enter an amount" className = "py-3 px-4 border mt-2 rounded-md"/>
-                </div>
+  const handleBankOptionChange = (selectedBankOption) => {
+    setSelectedBankOption(selectedBankOption);
+  };
+  const handleChange = (event) => {
+    setSaveBeneficiary(event.target.checked);
+  };
 
-                {/*pin*/}
-                <div className = "flex flex-col mt-4">
-                    <label className = "font-semibold text-sm" htmlFor="pin-text-field">
-                        Pin
-                    </label>
-                    <input id = "pin-text-field" type = "text" placeholder = "Enter pin" className = "py-3 px-4 border mt-2 rounded-md"/>
-                </div>
+  const togglePinVisibility = () => {
+    setShowPin(!showPin);
+  };
 
-                {/*description*/}
-                <div className = "flex flex-col mt-4">
-                    <label className = "font-semibold text-sm" htmlFor="description-text-area">
-                        Description
-                    </label>
-                    <textarea id = "pin-text-field" type = "text" placeholder = "Write a short description" className = "py-3 px-4 border mt-2 rounded-md">
-                    </textarea>
-                </div>
-                {/*save as beneficiary*/}
-                <div className = "flex mt-4 items-center justify-between">
-                    <div>
-                        <p className = "text-indigo-700 text-sm">Save as Beneficiary</p>
-                    </div>
-                    <div>
-                        <Switch
-                            checked={saveBeneficiary}
-                            onChange={handleChange}
-                            inputProps={{ 'aria-label': 'controlled' }}
-                        />
-                    </div>
-                </div>
-                {/*continue button*/}
-                <div className = "mt-10">
-                    <button className = "text-center w-full py-3 px-4 rounded-md bg-indigo-700 text-sm font-semibold text-white">Continue</button>
-                </div>
-            </form>
-        </div>
-    )
-}
+  const handleInputChange = (event) => {
+    setPin(event.target.value);
+    event.target.value = event.target.value.replace(/\D/, '');
+  };
+
+  return (
+    <Form>
+      <FormDiv>
+        {/*email*/}
+        <LabelInput style={{ marginTop: "0px" }}>Bank</LabelInput>
+        <SearchableSelect />
+
+
+        {/*amount*/}
+        <LabelInput htmlFor="amount-text-field">Amount</LabelInput>
+
+        <Input
+          id="amount-text-field"
+          type="text"
+          onChange={handleInputChange}
+          placeholder="Enter an amount"
+        />
+
+        {/*pin*/}
+        <LabelInput>Pin</LabelInput>
+
+        <InputGridDiv>
+        <InputGrid
+          id="pin-text-field"
+          type={showPin ? "text" : "password"}
+          placeholder="Enter pin"
+          onChange={handleInputChange}
+          minLength="4"
+          maxLength="4"
+        />
+        <IconGrid
+            className={`show-pin-icon ${showPin ? "visible" : ""}`}
+            onClick={togglePinVisibility}
+          >
+            <IconFlex>{showPin ? <SlashEyeIcon /> : <EyeIcon />}</IconFlex>
+          </IconGrid>
+        </InputGridDiv>
+
+        {/*description*/}
+        <LabelInput htmlFor="description-text-area">Description</LabelInput>
+
+        <InputDes
+          id="text-field"
+          placeholder="Write a short description"
+        ></InputDes>
+
+        {/*save as beneficiary*/}
+        <SBDiv>
+            Save as Beneficiary
+            <Togglebtn
+            checked={saveBeneficiary}
+            onChange={handleChange}
+            inputProps={{ "aria-label": "controlled" }}
+            />
+        </SBDiv>
+
+        {/*continue button*/}
+        <ButtonP>Continue</ButtonP>
+      </FormDiv>
+    </Form>
+  );
+};
 
 export default OtherBankTransfer;

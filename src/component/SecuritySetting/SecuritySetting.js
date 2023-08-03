@@ -55,4 +55,4 @@ const SecuritySetting = () => {
   )
 }
 
-export default SecuritySetting
+export default SecuritySetting;
