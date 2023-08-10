@@ -41,6 +41,7 @@ import Graph from "./Graph";
 import {useStateContext} from "../Context/ContextProvider";
 import axios from "axios";
 import Reveal from "../Reveal/Reveal";
+import RevealAppear from "../Reveal/RevealAppear";
 
 const Dashboard = () => {
   const [accountNumber, setAccountNumber] = useState("");
@@ -103,7 +104,9 @@ const Dashboard = () => {
 
             
             <WalletCard>
-              <img src={WalletSvg} alt="Logo" style={{ marginRight: '34px' }} />
+              <RevealAppear>
+                <img src={WalletSvg} alt="Logo" style={{ marginRight: '34px' }} />
+              </RevealAppear>
               <WSDiv>
                 <WSDiv2>
                   
@@ -130,7 +133,9 @@ const Dashboard = () => {
 
             
             <SpentCard>
-              <img src={SendSvg} alt="Logo" style={{ marginRight: '34px' }} />
+              <RevealAppear>
+                <img src={SendSvg} alt="Logo" style={{ marginRight: '34px' }} />
+              </RevealAppear>
               <WSDiv>
                 <WSDiv2>
                   <W1Label><Reveal>Amount Spent</Reveal></W1Label>
@@ -169,7 +174,7 @@ const Dashboard = () => {
                 Filter
               </FilterDiv>
             </WSDiv4>
-            
+
             <WSDiv5>
               {/* -----------------------------Line 1 */}
               <WSDiv4>
