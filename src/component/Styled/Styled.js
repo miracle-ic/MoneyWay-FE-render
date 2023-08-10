@@ -1407,6 +1407,8 @@ export const WSDiv5 = styled.div`
   justify-content: space-between;
   gap: 24px;
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export const WSDiv6 = styled.div`

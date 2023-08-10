@@ -40,6 +40,7 @@ import FcmbSvg from '../../asset/dashboardicon/Unionfcmb.svg';
 import Graph from "./Graph";
 import {useStateContext} from "../Context/ContextProvider";
 import axios from "axios";
+import Reveal from "../Reveal/Reveal";
 
 const Dashboard = () => {
   const [accountNumber, setAccountNumber] = useState("");
@@ -100,53 +101,66 @@ const Dashboard = () => {
 
           <DetailsDiv>
 
+            
             <WalletCard>
               <img src={WalletSvg} alt="Logo" style={{ marginRight: '34px' }} />
               <WSDiv>
                 <WSDiv2>
-                  <W1Label>Account Balance</W1Label>
-                  <W2Label>N {accountBalance}</W2Label>
+                  
+                    <W1Label><Reveal>Account Balance</Reveal></W1Label>
+                  
+                  
+                    <W2Label><Reveal>N500,000,000 {accountBalance}</Reveal></W2Label>
+
                 </WSDiv2>
 
-                <WSDiv2>
-                  <W3Label>{bank}</W3Label>
-                  <WSDiv3>
-                    <W1Label
-                        ref={textToCopy}
-                    >
-                      {accountNumber}
-                    </W1Label>
-                    <CopyIcon onClick={handleCopyToClipboard} />
-                  </WSDiv3>
-                </WSDiv2>
+                  <WSDiv2>
+                    <W3Label><Reveal>Wema Bank{bank}</Reveal></W3Label>
+                    
+                    <Reveal>
+                      <WSDiv3>
+                        <W1Label ref={textToCopy}>1234567890{accountNumber}</W1Label>
+                        <CopyIcon onClick={handleCopyToClipboard} />
+                      </WSDiv3>
+                    </Reveal>
+                    
+                  </WSDiv2>
               </WSDiv>
             </WalletCard>
 
+            
             <SpentCard>
               <img src={SendSvg} alt="Logo" style={{ marginRight: '34px' }} />
               <WSDiv>
                 <WSDiv2>
-                  <W1Label>Amount Spent</W1Label>
-                  <W2Label>N***</W2Label>
+                  <W1Label><Reveal>Amount Spent</Reveal></W1Label>
+                  <W2Label><Reveal>N65,000,000</Reveal></W2Label>
                 </WSDiv2>
 
                 <WSDiv2>
-                  <W1Label>Monthly percentage</W1Label>
-                  <W4Label>0.5% - 2%</W4Label>
+                  <W1Label><Reveal>Monthly percentage</Reveal></W1Label>
+                  <W4Label><Reveal>0.5% - 2%</Reveal></W4Label>
                 </WSDiv2>
               </WSDiv>
             </SpentCard>
+
 
           </DetailsDiv>
         </DHDiv>
 
         {/* -----------------------------Chart Graph */}
-        <CHDiv>
-          <Graph />
-        </CHDiv>
+        
+          <CHDiv>
+            <Reveal>
+              <Graph />
+            </Reveal>
+          </CHDiv>
+        
 
         {/* -----------------------------Transaction History */}
+        
         <THDiv>
+          <Reveal>
           <WSDiv>
             <WSDiv4>
               Transaction History
@@ -155,6 +169,7 @@ const Dashboard = () => {
                 Filter
               </FilterDiv>
             </WSDiv4>
+            
             <WSDiv5>
               {/* -----------------------------Line 1 */}
               <WSDiv4>
@@ -209,7 +224,9 @@ const Dashboard = () => {
               </WSDiv4>
             </WSDiv5>
           </WSDiv>
+          </Reveal>
         </THDiv>
+        
       </ContainerFBGpd>
   );
 };

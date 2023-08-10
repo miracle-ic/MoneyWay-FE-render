@@ -1,4 +1,5 @@
 import React from "react";
+import { useMatch } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdLogout } from "react-icons/md";
 import { BiWallet } from "react-icons/bi";
@@ -10,6 +11,8 @@ import {useStateContext} from "../Context/ContextProvider";
 
 
 const Sidebar = () => {
+    const isDashboardActive = useMatch("/user");
+
     const navigate = useNavigate();
 
     const context = useStateContext()
@@ -33,10 +36,9 @@ const Sidebar = () => {
     <SideCard>
       <SideNavDiv>
           <SideNavLink
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
+            className={isDashboardActive ? "active" : ""}
             to={"/user/"}
+            exact
           >
             <LuLayoutDashboard style={{ marginRight: '8px', fontSize: '22px' }} />
             Dashboard
