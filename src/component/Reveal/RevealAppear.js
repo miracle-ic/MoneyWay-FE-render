@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 const variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.85, delay: 0.25 } },
+  visible: { opacity: 1, transition: { duration: 0.85, delay: 0.25,  } },
 };
 
 const RevealAppear = ({ children }) => {
