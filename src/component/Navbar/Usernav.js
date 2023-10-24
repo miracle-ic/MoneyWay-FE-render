@@ -97,7 +97,7 @@ const Usernav = () => {
             height={42}
             style={{ clipPath: "circle(50% at 50% 50%)", marginRight: "10px" }}
           />
-            {firstName}
+            {firstName}Johnson
         </UserAvDiv>
       </NavRightDiv>
 

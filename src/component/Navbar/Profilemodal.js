@@ -45,8 +45,8 @@ const Profilemodal = () => {
             style={{ clipPath: "circle(50% at 50% 50%)", marginRight: "4px" }}
           />
           <LPdiv>
-            <LabelPM>{context.firstName+" "+context.lastName}</LabelPM>
-            <ParaPM>{context.email}</ParaPM>
+            <LabelPM>{context.firstName+" "+context.lastName}Johnson Reids</LabelPM>
+            <ParaPM>{context.email}johnsonreids@gmail.com</ParaPM>
           </LPdiv>
         </PmHdiv>
 
